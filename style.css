@@ -1,0 +1,821 @@
+:root {
+
+    /* Apple Color Palette */
+    --primary: #0071e3;
+    --primary-hover: #0077ed;
+    --primary-active: #0062c4;
+    --primary-light: rgba(0, 113, 227, 0.08);
+    --primary-subtle: rgba(0, 113, 227, 0.04);
+
+    --secondary: #5856d6;
+    --secondary-hover: #6361df;
+    --secondary-light: rgba(88, 86, 214, 0.08);
+
+    --success: #34c759;
+    --success-hover: #30b0c7;
+    --success-light: rgba(52, 199, 89, 0.12);
+    --success-text: #1a823b;
+
+    --danger: #ff3b30;
+    --danger-hover: #e03228;
+    --danger-light: rgba(255, 59, 48, 0.1);
+    --danger-text: #d70015;
+
+    --warning: #ff9500;
+    --warning-hover: #e68500;
+    --warning-light: rgba(255, 149, 0, 0.12);
+    --warning-text: #c05621;
+
+    /* Apple Neutral Palette */
+    --dark: #1d1d1f;
+    --gray-700: #424245;
+    --gray-500: #86868b;
+    --gray-400: #a1a1a6;
+    --gray-200: #e5e5ea;
+    --gray-100: #f5f5f7;
+    --gray-50: #fafafc;
+    --white: #ffffff;
+
+    /* Apple System Backgrounds */
+    --body-bg: #f5f5f7;
+    --card-bg: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.82);
+    --glass-border: rgba(0, 0, 0, 0.08);
+
+    /* Apple Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+    --shadow-lg: 0 12px 36px -4px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+    --shadow-float: 0 20px 40px -8px rgba(0, 0, 0, 0.12), 0 6px 16px -4px rgba(0, 0, 0, 0.05);
+
+    /* Apple Geometry & Curves */
+    --radius: 18px;
+    --radius-sm: 12px;
+    --radius-pill: 980px;
+
+    /* Apple Smooth Motion Curve */
+    --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition: all 0.24s var(--ease-apple);
+    --transition-fast: all 0.16s var(--ease-apple);
+}
+
+/* Base Reset & San Francisco Typography */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    background-color: var(--body-bg);
+    color: var(--dark);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    letter-spacing: -0.012em;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Custom Apple Scrollbar */
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.16);
+    border-radius: var(--radius-pill);
+    border: 2px solid var(--body-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.28);
+}
+
+/* Apple Frosted Glass Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--glass-border);
+    transition: var(--transition);
+}
+
+.nav-container {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0.65rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 52px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    transition: var(--transition-fast);
+}
+
+.brand:hover {
+    opacity: 0.8;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--gray-700);
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    transition: var(--transition-fast);
+}
+
+.nav-links a:hover {
+    color: var(--dark);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.nav-links a.active {
+    color: var(--dark);
+    background: rgba(0, 0, 0, 0.07);
+    font-weight: 600;
+}
+
+/* Main Container */
+.main-content {
+    max-width: 1160px;
+    width: 100%;
+    margin: 2.2rem auto 3rem;
+    padding: 0 1.5rem;
+    flex: 1;
+}
+
+/* Page Header - Apple Hero Style */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+}
+
+.page-title h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+}
+
+.page-title p {
+    color: var(--gray-500);
+    font-size: 0.98rem;
+    margin-top: 0.4rem;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+}
+
+/* Apple Alerts & Notifications */
+.alert {
+    padding: 0.9rem 1.35rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.92rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+    animation: appleSlideDown 0.35s var(--ease-apple);
+    backdrop-filter: blur(10px);
+}
+
+.alert-success {
+    background-color: var(--success-light);
+    color: var(--success-text);
+    border: 1px solid rgba(52, 199, 89, 0.25);
+}
+
+.alert-danger {
+    background-color: var(--danger-light);
+    color: var(--danger-text);
+    border: 1px solid rgba(255, 59, 48, 0.22);
+}
+
+.alert-warning {
+    background-color: var(--warning-light);
+    color: var(--warning-text);
+    border: 1px solid rgba(255, 149, 0, 0.25);
+}
+
+/* Apple Widgets (Stats Grid) */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2.25rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--glass-border);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Apple SF Squircle Stat Icons */
+.stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Category SF Icon */
+.stat-icon.primary {
+    background: linear-gradient(135deg, #0071e3 0%, #42a5f5 100%);
+    color: var(--white);
+}
+
+.stat-icon.primary::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-color: #ffffff;
+    display: block;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M4 5a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5z'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M4 5a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5z'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+/* Stand UMKM Store SF Icon */
+.stat-icon.secondary {
+    background: linear-gradient(135deg, #5856d6 0%, #af52de 100%);
+    color: var(--white);
+}
+
+.stat-icon.secondary::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-color: #ffffff;
+    display: block;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M19 4H5a2 2 0 0 0-2 2v2a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a2 2 0 0 0-2-2zm-1 9v6a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-6a5 5 0 0 0 3 .95A5 5 0 0 0 12 13a5 5 0 0 0 3 .95A5 5 0 0 0 18 13z'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M19 4H5a2 2 0 0 0-2 2v2a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a2 2 0 0 0-2-2zm-1 9v6a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-6a5 5 0 0 0 3 .95A5 5 0 0 0 12 13a5 5 0 0 0 3 .95A5 5 0 0 0 18 13z'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+/* Menu Food SF Icon */
+.stat-icon.success {
+    background: linear-gradient(135deg, #34c759 0%, #30b0c7 100%);
+    color: var(--white);
+}
+
+.stat-icon.success::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-color: #ffffff;
+    display: block;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+.stat-info h3 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+}
+
+.stat-info span {
+    color: var(--gray-500);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    margin-top: 0.25rem;
+}
+
+/* Grid Layout */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.75rem;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Apple Cards */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+    padding: 1.25rem 1.6rem;
+    border-bottom: 1px solid var(--glass-border);
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+}
+
+.card-body {
+    padding: 1.6rem;
+}
+
+/* Apple Form Controls (macOS & iOS Style) */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.72rem 0.95rem;
+    font-size: 0.94rem;
+    font-family: inherit;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    background: #fbfbfd;
+    color: var(--dark);
+    transition: var(--transition-fast);
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.form-control::placeholder {
+    color: var(--gray-400);
+}
+
+.form-control:hover {
+    border-color: #c7c7cc;
+    background: #ffffff;
+}
+
+.form-control:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.16);
+}
+
+/* Custom Apple Select Arrow */
+select.form-control {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2386868b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    background-size: 16px;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+/* Apple Radio Buttons */
+.radio-group {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+    color: var(--gray-700);
+    cursor: pointer;
+    user-select: none;
+    transition: var(--transition-fast);
+}
+
+.radio-label:hover {
+    color: var(--dark);
+}
+
+.radio-label input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--gray-400);
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    background: #ffffff;
+    transition: var(--transition-fast);
+}
+
+.radio-label input[type="radio"]::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 0.15s transform ease-in-out;
+    background-color: #ffffff;
+}
+
+.radio-label input[type="radio"]:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.radio-label input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+/* Apple Pill Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.65rem 1.35rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition: var(--transition-fast);
+    outline: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-sm {
+    padding: 0.38rem 0.95rem;
+    font-size: 0.82rem;
+    border-radius: var(--radius-pill);
+}
+
+/* Apple Primary Pill (Iconic Apple Blue) */
+.btn-primary {
+    background: var(--primary);
+    color: var(--white);
+    border-color: transparent;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 4px 14px rgba(0, 113, 227, 0.32);
+}
+
+/* Apple Secondary Pill (Minimal Gray) */
+.btn-secondary {
+    background: #f5f5f7;
+    color: var(--dark);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+.btn-secondary:hover {
+    background: #e8e8ed;
+    color: var(--dark);
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Apple Destructive Button */
+.btn-danger {
+    background: var(--danger-light);
+    color: var(--danger);
+    border-color: rgba(255, 59, 48, 0.2);
+}
+
+.btn-danger:hover {
+    background: var(--danger);
+    color: var(--white);
+    border-color: transparent;
+    box-shadow: 0 4px 14px rgba(255, 59, 48, 0.28);
+}
+
+/* Apple Warning / Edit Button */
+.btn-warning {
+    background: var(--warning-light);
+    color: var(--warning-text);
+    border-color: rgba(255, 149, 0, 0.22);
+}
+
+.btn-warning:hover {
+    background: var(--warning);
+    color: var(--white);
+    border-color: transparent;
+    box-shadow: 0 4px 14px rgba(255, 149, 0, 0.28);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Apple Data Table */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.table th {
+    background: #fafafc;
+    padding: 0.9rem 1.25rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    border-bottom: 1px solid var(--glass-border);
+    text-transform: uppercase;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+}
+
+.table td {
+    padding: 0.95rem 1.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--dark);
+    vertical-align: middle;
+}
+
+.table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.018);
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Apple Badges & Status Tags */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.28rem 0.75rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+.badge-primary {
+    background: var(--gray-200);
+    color: var(--primary);
+    border: 1px solid rgba(0, 113, 227, 0.15);
+}
+
+.badge-success {
+    background: var(--success-light);
+    color: var(--success-text);
+    border: 1px solid rgba(52, 199, 89, 0.2);
+}
+
+.badge-danger {
+    background: var(--danger-light);
+    color: var(--danger-text);
+    border: 1px solid rgba(255, 59, 48, 0.2);
+}
+
+.badge-gray {
+    background: rgba(142, 142, 147, 0.12);
+    color: var(--gray-700);
+    border: 1px solid rgba(142, 142, 147, 0.18);
+}
+
+/* Apple Photo Thumbnails */
+.umkm-thumb {
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    display: block;
+    background-color: #f5f5f7;
+    transition: var(--transition);
+}
+
+.umkm-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
+.thumb-preview-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    background: #fbfbfd;
+    border: 1px dashed #d2d2d7;
+    border-radius: 14px;
+    margin-top: 0.65rem;
+}
+
+.thumb-preview-img {
+    width: 68px;
+    height: 68px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* Apple Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    color: var(--gray-500);
+}
+
+.empty-state-icon {
+    font-size: 2.8rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.85;
+    line-height: 1;
+}
+
+/* Empty icon fallback if empty in HTML */
+.empty-state-icon:empty::before {
+    content: "📁";
+    display: inline-block;
+}
+
+.empty-state p {
+    font-size: 0.95rem;
+    color: var(--gray-500);
+    letter-spacing: -0.01em;
+}
+
+/* Apple Minimalist Footer */
+.footer {
+    background: #f5f5f7;
+    border-top: 1px solid var(--glass-border);
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--gray-500);
+    font-size: 0.82rem;
+    margin-top: auto;
+    letter-spacing: -0.01em;
+}
+
+.footer strong {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+/* Micro-animations */
+@keyframes appleSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .page-title h1 {
+        font-size: 1.75rem;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+}
